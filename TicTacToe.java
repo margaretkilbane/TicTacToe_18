@@ -7,6 +7,7 @@ public class TicTacToe extends JPanel
 {
     JButton buttons[] = new JButton[9]; 
     int alternate = 0;//if this number is a even, then put a X. If it's odd, then put an O
+    int count - 0; 
     
     public TicTacToe()
     {
@@ -28,6 +29,7 @@ public class TicTacToe extends JPanel
     }
     public void resetButtons()
     {
+    count = 0; 
         for(int i = 0; i <= 8; i++)
         {
             buttons[i].setText("");
@@ -54,6 +56,31 @@ public class TicTacToe extends JPanel
             }
                 
             alternate++;
+            count++; 
+        
+          if(checkForWin() == true && alternate % 2 == 0)
+          {
+            JOptionPane.showMessageDialog(null, "Game Over! O wins!");
+            resetButtons();
+          }
+          
+          else
+          {
+              if(checkForWin() == true && alternate % 2 != 0)
+              {
+                 JOptionPane.showMessageDialog(null, "Game Over! X wins!");
+                 resetButtons();
+              }
+              
+              else
+              {
+                  if (count == 9)
+                  {
+                   JOptionPane.showMessageDialog(null, "Game Over! Tie!");
+                   resetButtons();
+                  }
+              }
+            }
             
         }
         
